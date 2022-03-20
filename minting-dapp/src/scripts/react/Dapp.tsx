@@ -317,6 +317,42 @@ export default class Dapp extends React.Component<Props, State> {
       this.provider.getSigner(),
     ) as NftContractType;
 
+    console.log(await this.contract)
+    let prefix = await this.contract.tokenURI(1)
+    let url1 = 'https://' + prefix
+
+    fetch(url1)
+      .then(res => res.json())
+      .then(out =>
+        console.log('Checkout this JSON! ', out))
+      // .catch(err => throw err);
+    
+      // console.log(await this.contract.tokenURI(1))
+
+    // console.log(this.state.userAddress)
+    // if (this.state.userAddress) {
+    //   let balanceOf = await this.contract.balanceOf(this.state.userAddress)
+    //   console.log(Number(balanceOf))
+
+    // }
+    
+    // let walletOwnerTokens = await this.contract.walletOfOwner("0xc692D77166576C75B62D093C176DcAf85a71E408")
+    // console.log(walletOwnerTokens.toString())
+    // let req = new XMLHttpRequest();
+
+    // req.onreadystatechange = () => {
+    //   if (req.readyState == XMLHttpRequest.DONE) {
+    //     console.log(req.responseText);
+    //   }
+    // };
+
+    // req.open("PUT", "https://api.jsonbin.io/v3/b/62378f2c7caf5d67836dbf9f", true);
+    // req.setRequestHeader("Content-Type", "application/json");
+    // req.setRequestHeader("X-Master-Key", "$2b$10$Jse3nkbsbdzGqDkZtcMIaeUv43SWbeSYb7IwjuPG.S53wM.AFpt4O");
+    // let data = { token: walletOwnerTokens.toString().split(',') }
+    // console.log(data)
+    // req.send(JSON.stringify(data));
+
     this.setState({
       maxSupply: (await this.contract.maxSupply()).toNumber(),
       totalSupply: (await this.contract.totalSupply()).toNumber(),
