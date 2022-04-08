@@ -28,6 +28,14 @@ export default function Test() {
 
   return (
     <div>
+        <div>Tokens in the database:</div>
+        {users.map((user, key) => {
+            return (
+              <div key={key}>
+                <li>{`${user.token} (${user.id})`}</li>
+              </div>
+            ) 
+        })}
         <input 
           type="number" 
           onChange={(e) => {
@@ -37,15 +45,8 @@ export default function Test() {
           >
         </input>
         <button onClick={createUser}>Enter Palooza!</button>
-        {users.map((user, key) => {
-            return (
-              <div key={key}>
-                <li>{user.token}</li>
-                <li>{user.id}</li>
-              </div>
-            ) 
-        })}
-        <Dapp/>
+        <hr/>
+        <Dapp users={users} />
       </div>
   )
 }

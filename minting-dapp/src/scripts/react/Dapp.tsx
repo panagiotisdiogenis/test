@@ -12,6 +12,10 @@ import Whitelist from '../lib/Whitelist';
 const ContractAbi = require('../../../../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
 interface Props {
+  users: Array<{
+    id: string,
+    token: Number
+  }>
 }
 
 interface State {
@@ -28,6 +32,7 @@ interface State {
   merkleProofManualAddress: string;
   merkleProofManualAddressFeedbackMessage: string|JSX.Element|null;
   errorMessage: string|JSX.Element|null,
+  walletTokens: Array<{}>
 }
 
 const defaultState: State = {
@@ -44,6 +49,7 @@ const defaultState: State = {
   merkleProofManualAddress: '',
   merkleProofManualAddressFeedbackMessage: null,
   errorMessage: null,
+  walletTokens: [],
 };
 
 export default class Dapp extends React.Component<Props, State> {
@@ -79,6 +85,16 @@ export default class Dapp extends React.Component<Props, State> {
     this.registerWalletEvents(browserProvider);
 
     await this.initWallet();
+
+    if (this.state.userAddress) {
+      let walletOwnerTokens = await this.contract.walletOfOwner(this.state.userAddress) // The Token IDs you own
+      console.log('Token IDs you own: ', walletOwnerTokens.toString().split(','))
+      this.setState({
+        walletTokens: walletOwnerTokens.toString().split(',')
+      })
+    }
+
+
   }
 
   async mintTokens(amount: number): Promise<void>
@@ -142,10 +158,33 @@ export default class Dapp extends React.Component<Props, State> {
     });
   }
 
-  render() {
-
+  renderTokens = () => {
+    const { walletTokens } = this.state;
     return (
       <>
+        <div>Tokens you own that are in the database:</div>
+        {this.props.users.map((user, key) => {
+          console.log(user.id)
+            for (let i=0; i < walletTokens.length; i++) {
+              if ( Number(walletTokens[i]) === user.token) {
+                return (
+                  <li>{user.token}</li>
+                )
+              }
+            }
+        })}
+        <hr/>
+        <div>Tokens you own:</div>
+        <li>{JSON.stringify(walletTokens)}</li>
+      </>
+    )
+  }
+
+  render() {
+    return (
+      <>
+        {this.renderTokens()}
+
         {this.isNotMainnet() ?
           <div className="not-mainnet">
             You are not connected to the main network.
@@ -320,15 +359,15 @@ export default class Dapp extends React.Component<Props, State> {
 
     /* <----------- Get Token Info ------------> */
 
-    console.log(await this.contract) // ETH Contract
-    console.log('Wallet Address:', this.state.userAddress) // Your wallet address
+    // console.log(await this.contract) // ETH Contract
+    // console.log('Wallet Address:', this.state.userAddress) // Your wallet address
 
-    if (this.state.userAddress) {
-      let balanceOf = await this.contract.balanceOf(this.state.userAddress) // How many tokens you own
-      console.log('How many tokens you own: ', Number(balanceOf))
-      let walletOwnerTokens = await this.contract.walletOfOwner(this.state.userAddress) // The Token IDs you own
-      console.log('Token IDs you own: ', walletOwnerTokens.toString().split(','))
-    }
+    // if (this.state.userAddress) {
+    //   let balanceOf = await this.contract.balanceOf(this.state.userAddress) // How many tokens you own
+    //   console.log('How many tokens you own: ', Number(balanceOf))
+    //   let walletOwnerTokens = await this.contract.walletOfOwner(this.state.userAddress) // The Token IDs you own
+    //   console.log('Token IDs you own: ', walletOwnerTokens.toString().split(','))
+    // }
 
     /* <---------------------------------------> */
 
