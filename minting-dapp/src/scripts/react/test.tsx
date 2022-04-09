@@ -41,11 +41,12 @@ export default function Test(props) {
                 {props.walletTokens.map((token: number, key: any) => {
                     let buttonName = users[0].tokens[token] ? 'Leave Party' : 'Enter Party';
                     return (
-                        <>
-                            <li key={key}>{`token ID: ${token}, bool: ${users[0].tokens[token]}`}</li>
+                        <div className="party" key={key}>
+                            <img className="party-img" src={`https://gateway.ipfs.io/ipfs/QmU6CBfcvrpUSUb2RJtAQkGMAvk7F7cp3ESfdNUU6zaX2x/${token}.png`} height="100" width="100" />
+                            <div className="party-data">{`token ID: ${token}, bool: ${users[0].tokens[token]}`}</div>
                             {/* @ts-ignore: Unreachable code error */}
-                            <button onClick={() => updateUser(users[0].id, !users[0].tokens[token], token) }>{buttonName}</button>
-                        </>
+                            <button className="party-btn" onClick={() => updateUser(users[0].id, !users[0].tokens[token], token) }>{buttonName}</button>
+                        </div>
                     )
                 })}
                 </>
