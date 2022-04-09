@@ -1,52 +1,59 @@
 import { useState, useEffect } from 'react';
 import { db } from './firebase-config';
-import { collection, getDocs, addDoc } from 'firebase/firestore'
-import Dapp from './Dapp'
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 
-export default function Test() {
-  const [users, setUsers] = useState<any[]>([]);
-  const [newToken, setNewToken] = useState<number>(0);
-  const usersCollectionRef = collection(db, 'users');
+interface Props {
+    userAddress: string|null;
+}
 
-  useEffect(() => {
-
+// @ts-ignore: Unreachable code error 
+export default function Test(props) {
+    const [users, setUsers] = useState<any[]>([]);
+    const usersCollectionRef = collection(db, 'users');
     const getTokens = async () => {
-      const data = await getDocs(usersCollectionRef);
-      data.docs.map((doc) => {
-        // console.log(doc.data())
-      })
-      // console.log(data.docs);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        const data = await getDocs(usersCollectionRef);
+        setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     }
 
-    getTokens()
-  }, [])
+    // @ts-ignore: Unreachable code error 
+    const updateUser = async (id, bool, token) => {
+        const userDoc = doc(db, "users", id)
+        const newFields = { 
+            tokens: {
+                ...users[0].tokens,
+                [token]: bool
+            } 
+        };
+        getTokens()
+        await updateDoc(userDoc, newFields)
+    }
 
-  const createUser = async () => {
-    await addDoc(usersCollectionRef, { token: newToken })
-  }
+    useEffect(() => {
+        getTokens()
+    }, [props.walletTokens])
 
-  return (
-    <div>
-        <div>Tokens in the database:</div>
-        {users.map((user, key) => {
+    const renderItems = () => {
+        // @ts-ignore: Unreachable code error 
+        if (users.length > 0) {
+            // console.log(JSON.stringify(users[0].tokens))
             return (
-              <div key={key}>
-                <li>{`${user.token} (${user.id})`}</li>
-              </div>
-            ) 
-        })}
-        <input 
-          type="number" 
-          onChange={(e) => {
-            setNewToken(Number(e.target.value))
-          }}
-          placeholder="Token ID"
-          >
-        </input>
-        <button onClick={createUser}>Enter Palooza!</button>
-        <hr/>
-        <Dapp users={users} />
-      </div>
-  )
+                <>
+                {props.walletTokens.map((token: number, key: any) => {
+                    let buttonName = users[0].tokens[token] ? 'Leave Party' : 'Enter Party';
+                    return (
+                        <>
+                            <li key={key}>{`token ID: ${token}, bool: ${users[0].tokens[token]}`}</li>
+                            {/* @ts-ignore: Unreachable code error */}
+                            <button onClick={() => updateUser(users[0].id, !users[0].tokens[token], token) }>{buttonName}</button>
+                        </>
+                    )
+                })}
+                </>
+            )
+        }
+    }
+
+    return (
+        <>{renderItems()}</>
+    )
 }

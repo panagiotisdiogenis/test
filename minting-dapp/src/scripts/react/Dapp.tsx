@@ -8,6 +8,7 @@ import NetworkConfigInterface from '../../../../smart-contract/lib/NetworkConfig
 import CollectionStatus from './CollectionStatus';
 import MintWidget from './MintWidget';
 import Whitelist from '../lib/Whitelist';
+import Test from './Test';
 
 const ContractAbi = require('../../../../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
@@ -88,12 +89,11 @@ export default class Dapp extends React.Component<Props, State> {
 
     if (this.state.userAddress) {
       let walletOwnerTokens = await this.contract.walletOfOwner(this.state.userAddress) // The Token IDs you own
-      console.log('Token IDs you own: ', walletOwnerTokens.toString().split(','))
+      // console.log('Token IDs you own: ', walletOwnerTokens.toString().split(','))
       this.setState({
-        walletTokens: walletOwnerTokens.toString().split(',')
+        walletTokens: walletOwnerTokens.toString().split(',').map(t => Number(t))
       })
     }
-
 
   }
 
@@ -158,33 +158,12 @@ export default class Dapp extends React.Component<Props, State> {
     });
   }
 
-  renderTokens = () => {
-    const { walletTokens } = this.state;
-    return (
-      <>
-        <div>Tokens you own that are in the database:</div>
-        {this.props.users.map((user, key) => {
-          console.log(user.id)
-            for (let i=0; i < walletTokens.length; i++) {
-              if ( Number(walletTokens[i]) === user.token) {
-                return (
-                  <li>{user.token}</li>
-                )
-              }
-            }
-        })}
-        <hr/>
-        <div>Tokens you own:</div>
-        <li>{JSON.stringify(walletTokens)}</li>
-      </>
-    )
-  }
-
   render() {
     return (
       <>
-        {this.renderTokens()}
-
+        {/* @ts-ignore: Unreachable code error */}
+        <Test walletTokens={this.state.walletTokens} />
+        
         {this.isNotMainnet() ?
           <div className="not-mainnet">
             You are not connected to the main network.

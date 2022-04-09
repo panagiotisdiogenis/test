@@ -2,7 +2,6 @@ import '../styles/main.scss';
 
 import ReactDOM from 'react-dom';
 import Dapp from './react/Dapp';
-import Test from './react/test'
 import CollectionConfig from '../../../smart-contract/config/CollectionConfig';
 
 if (document.title === '') {
@@ -10,5 +9,5 @@ if (document.title === '') {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  ReactDOM.render(<Test />, document.getElementById('minting-dapp'));
+  ReactDOM.render(<Dapp users={[]} />, document.getElementById('minting-dapp'));
 });
