@@ -223,23 +223,34 @@
     }
   }
 
-  .party {
-    padding: 10px;
-    border-radius: 5px;
-    border: solid 1px #ccc;
-    text-align: center;
-    .party-img {
-      border-radius: 12px;
-      height: 100%;
-      width: 100%;
-      padding: 5px;
-      margin: auto;
-    }
-    .party-data {
+  .tokens-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .tokens {
+      margin: 5px;
       padding: 10px;
-    }
-    .party-btn {
-      margin: 0 auto;
+      border-radius: 5px;
+      border: solid 1px #ccc;
+      text-align: center;
+      .tokens-img-wrapper {
+        border-radius: 5px;
+        background-color: black;
+        .tokens-img {
+          border-radius: 5px;
+          height: 200px;
+          width: 200px;
+          margin: auto;
+        }
+        .opacity {
+          opacity: 0.5;
+        }
+      }
+      .tokens-data {
+        padding: 10px;
+      }
+      .tokens-btn {
+        margin: 0 auto;
+      }
     }
   }
 }

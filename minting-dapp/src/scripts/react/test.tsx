@@ -24,37 +24,41 @@ export default function Test(props) {
                 [token]: bool
             } 
         };
-        getTokens()
         await updateDoc(userDoc, newFields)
     }
 
     useEffect(() => {
         getTokens()
-    }, [props.walletTokens])
+    }, [props.walletTokens, users])
 
     const renderItems = () => {
         // @ts-ignore: Unreachable code error 
         if (users.length > 0) {
-            // console.log(JSON.stringify(users[0].tokens))
             return (
                 <>
-                {props.walletTokens.map((token: number, key: any) => {
-                    let buttonName = users[0].tokens[token] ? 'Leave Party' : 'Enter Party';
-                    return (
-                        <div className="party" key={key}>
-                            <img className="party-img" src={`https://gateway.ipfs.io/ipfs/QmU6CBfcvrpUSUb2RJtAQkGMAvk7F7cp3ESfdNUU6zaX2x/${token}.png`} height="100" width="100" />
-                            <div className="party-data">{`token ID: ${token}, bool: ${users[0].tokens[token]}`}</div>
-                            {/* @ts-ignore: Unreachable code error */}
-                            <button className="party-btn" onClick={() => updateUser(users[0].id, !users[0].tokens[token], token) }>{buttonName}</button>
-                        </div>
-                    )
-                })}
+                    {props.walletTokens.map((token: number, key: any) => {
+                        let buttonName = users[0].tokens[token] ? 'Leave Party' : 'Enter Party';
+                        let opacity = users[0].tokens[token] ? 'opacity' : '';
+                        return (
+                            <div className="tokens" key={key}>
+                                <div className="tokens-img-wrapper">
+                                    <img 
+                                        className={`tokens-img ${opacity}`} 
+                                        src={`https://gateway.ipfs.io/ipfs/QmU6CBfcvrpUSUb2RJtAQkGMAvk7F7cp3ESfdNUU6zaX2x/${token}.png`} 
+                                        />
+                                </div>
+                                <div className="tokens-data">{`token ID: ${token}, bool: ${users[0].tokens[token]}`}</div>
+                                {/* @ts-ignore: Unreachable code error */}
+                                <button className="tokens-btn" onClick={() => updateUser(users[0].id, !users[0].tokens[token], token) }>{buttonName}</button>
+                            </div>
+                        )
+                    })}
                 </>
             )
         }
     }
 
     return (
-        <>{renderItems()}</>
+        <div className="tokens-container">{renderItems()}</div>
     )
 }
