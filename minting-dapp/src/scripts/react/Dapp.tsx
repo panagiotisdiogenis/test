@@ -33,7 +33,7 @@ interface State {
   merkleProofManualAddress: string;
   merkleProofManualAddressFeedbackMessage: string|JSX.Element|null;
   errorMessage: string|JSX.Element|null,
-  walletTokens: Array<{}>
+  walletTokens: Array<number>
 }
 
 const defaultState: State = {
@@ -86,15 +86,6 @@ export default class Dapp extends React.Component<Props, State> {
     this.registerWalletEvents(browserProvider);
 
     await this.initWallet();
-
-    if (this.state.userAddress) {
-      let walletOwnerTokens = await this.contract.walletOfOwner(this.state.userAddress) // The Token IDs you own
-      // console.log('Token IDs you own: ', walletOwnerTokens.toString().split(','))
-      this.setState({
-        walletTokens: walletOwnerTokens.toString().split(',').map(t => Number(t))
-      })
-    }
-
   }
 
   async mintTokens(amount: number): Promise<void>
@@ -161,7 +152,6 @@ export default class Dapp extends React.Component<Props, State> {
   render() {
     return (
       <>
-        {/* @ts-ignore: Unreachable code error */}
         <Test walletTokens={this.state.walletTokens} />
         
         {this.isNotMainnet() ?
@@ -317,7 +307,7 @@ export default class Dapp extends React.Component<Props, State> {
 
       return;
     }
-    
+
     this.setState({
       userAddress: walletAccounts[0],
       network,
@@ -336,19 +326,7 @@ export default class Dapp extends React.Component<Props, State> {
       this.provider.getSigner(),
     ) as NftContractType;
 
-    /* <----------- Get Token Info ------------> */
-
-    // console.log(await this.contract) // ETH Contract
-    // console.log('Wallet Address:', this.state.userAddress) // Your wallet address
-
-    // if (this.state.userAddress) {
-    //   let balanceOf = await this.contract.balanceOf(this.state.userAddress) // How many tokens you own
-    //   console.log('How many tokens you own: ', Number(balanceOf))
-    //   let walletOwnerTokens = await this.contract.walletOfOwner(this.state.userAddress) // The Token IDs you own
-    //   console.log('Token IDs you own: ', walletOwnerTokens.toString().split(','))
-    // }
-
-    /* <---------------------------------------> */
+    let walletOwnerTokens = await this.contract.walletOfOwner(walletAccounts[0]) // The Token IDs you own
 
     this.setState({
       maxSupply: (await this.contract.maxSupply()).toNumber(),
@@ -358,6 +336,7 @@ export default class Dapp extends React.Component<Props, State> {
       isPaused: await this.contract.paused(),
       isWhitelistMintEnabled: await this.contract.whitelistMintEnabled(),
       isUserInWhitelist: Whitelist.contains(this.state.userAddress ?? ''),
+      walletTokens: walletOwnerTokens.toString().split(',').map(t => Number(t)),
     });
   }
 
