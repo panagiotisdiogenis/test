@@ -13,10 +13,6 @@ import Test from './Test';
 const ContractAbi = require('../../../../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
 interface Props {
-  users: Array<{
-    id: string,
-    token: Number
-  }>
 }
 
 interface State {

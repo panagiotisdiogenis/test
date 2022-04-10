@@ -9,5 +9,5 @@ if (document.title === '') {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  ReactDOM.render(<Dapp users={[]} />, document.getElementById('minting-dapp'));
+  ReactDOM.render(<Dapp />, document.getElementById('minting-dapp'));
 });

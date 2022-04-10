@@ -18,12 +18,21 @@ export default function Test(props: { walletTokens: number[] }) {
                 [token]: bool
             } 
         };
+        setUsers([
+            {
+                tokens: {
+                    ...users[0].tokens,
+                    [token]: bool
+                },
+                id,
+            }
+        ])
         await updateDoc(userDoc, newFields)
     }
 
     useEffect(() => {
         getTokens()
-    }, [props.walletTokens, users])
+    }, [])
 
     const renderItems = () => {
         if (users.length > 0) {
@@ -41,7 +50,6 @@ export default function Test(props: { walletTokens: number[] }) {
                                         />
                                 </div>
                                 <div className="tokens-data">{`token ID: ${token}, bool: ${users[0].tokens[token]}`}</div>
-                                {/* @ts-ignore: Unreachable code error */}
                                 <button className="tokens-btn" onClick={() => updateUser(users[0].id, !users[0].tokens[token], token) }>{buttonName}</button>
                             </div>
                         )
