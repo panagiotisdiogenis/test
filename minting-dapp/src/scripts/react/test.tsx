@@ -12,11 +12,11 @@ export default function Test(props: { walletTokens: number[] }) {
 
     const updateUser = async (id: string, bool: boolean, token: number) => {
         const userDoc = doc(db, "users", id)
-        const newFields = { 
+        const newFields = {
             tokens: {
                 ...users[0].tokens,
                 [token]: bool
-            } 
+            }
         };
         setUsers([
             {

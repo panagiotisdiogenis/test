@@ -9,6 +9,7 @@ import CollectionStatus from './CollectionStatus';
 import MintWidget from './MintWidget';
 import Whitelist from '../lib/Whitelist';
 import Test from './Test';
+import WalletChecker from './WalletChecker';
 
 const ContractAbi = require('../../../../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
@@ -145,11 +146,25 @@ export default class Dapp extends React.Component<Props, State> {
     });
   }
 
+  // fetchTraits = async () => {
+  //   if (this.contract) {
+  //     const nft = await this.contract.tokenURI(1)
+  //     let url = "https://gateway.pinata.cloud/ipfs/" + nft.split("ipfs://")[1]
+  //     const response = await fetch(url);
+  //     if(!response.ok)
+  //       throw new Error(response.statusText);
+  //     const json = await response.json();
+  //     console.log(json.attributes) 
+  //   }
+  // }
+
   render() {
+    
     return (
       <>
-        <Test walletTokens={this.state.walletTokens} />
-        
+        {/* <Test walletTokens={this.state.walletTokens} /> */}
+        {/* @ts-ignore */}
+        {this.contract ? <WalletChecker walletOfOwner={this.contract.walletOfOwner} /> : null}
         {this.isNotMainnet() ?
           <div className="not-mainnet">
             You are not connected to the main network.
@@ -332,7 +347,7 @@ export default class Dapp extends React.Component<Props, State> {
       isPaused: await this.contract.paused(),
       isWhitelistMintEnabled: await this.contract.whitelistMintEnabled(),
       isUserInWhitelist: Whitelist.contains(this.state.userAddress ?? ''),
-      walletTokens: walletOwnerTokens.toString().split(',').map(t => Number(t)),
+      walletTokens: walletOwnerTokens.map(t => Number(t)),
     });
   }
 

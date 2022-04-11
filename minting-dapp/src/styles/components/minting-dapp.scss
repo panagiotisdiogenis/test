@@ -2,7 +2,7 @@
   @apply flex flex-col gap-6;
   @apply mt-6 mx-auto;
   @apply w-full;
-  @apply max-w-md;
+  @apply max-w-3xl;
 
   .no-wallet {
     @apply flex flex-col;
@@ -250,6 +250,57 @@
       }
       .tokens-btn {
         margin: 0 auto;
+      }
+    }
+  }
+
+  .wallet-checker-container {
+    @apply rounded-lg;
+    @apply px-6 py-6;
+
+    @apply text-center;
+    @apply bg-popupsbg;
+    @apply border border-neutral-50;
+    @apply shadow;
+
+    .wallet-checker-search {
+      margin: 20px;
+      .wallet-checker-title {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 600;
+      }
+      .wallet-checker-subtitle {
+        text-align: center;
+        margin: 20px
+      }
+      .wallet-checker-input {
+        margin: 20px auto;
+        display: block;
+      }
+      .wallet-checker-button {
+        margin: auto;
+        display: block;
+      }
+    }
+    .wallet-checker-tokens {    display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      .token-container {
+        @apply border border-neutral-50;
+        @apply shadow;
+        border: solid 1px #000;
+        margin: 20px;
+        border-radius: 5px;
+        .token-img {
+          border-radius: 5px 5px 0px 0px;
+        }
+        .token-data {
+          text-align: left;
+          padding: 20px;
+          font-weight: 600;
+          font-style: italic;
+          border-top: solid 1px #000;
+        }
       }
     }
   }
