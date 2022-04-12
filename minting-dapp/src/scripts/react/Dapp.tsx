@@ -146,25 +146,13 @@ export default class Dapp extends React.Component<Props, State> {
     });
   }
 
-  // fetchTraits = async () => {
-  //   if (this.contract) {
-  //     const nft = await this.contract.tokenURI(1)
-  //     let url = "https://gateway.pinata.cloud/ipfs/" + nft.split("ipfs://")[1]
-  //     const response = await fetch(url);
-  //     if(!response.ok)
-  //       throw new Error(response.statusText);
-  //     const json = await response.json();
-  //     console.log(json.attributes) 
-  //   }
-  // }
-
   render() {
     
     return (
       <>
         {/* <Test walletTokens={this.state.walletTokens} /> */}
         {/* @ts-ignore */}
-        {this.contract ? <WalletChecker walletOfOwner={this.contract.walletOfOwner} /> : null}
+        {this.contract ? <WalletChecker walletOfOwner={this.contract.walletOfOwner} tokenURI={this.contract.tokenURI} /> : null}
         {this.isNotMainnet() ?
           <div className="not-mainnet">
             You are not connected to the main network.

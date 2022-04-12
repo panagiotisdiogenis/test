@@ -256,7 +256,7 @@
 
   .wallet-checker-container {
     @apply rounded-lg;
-    @apply px-6 py-6;
+    @apply px-8 py-8;
 
     @apply text-center;
     @apply bg-popupsbg;
@@ -283,14 +283,19 @@
         display: block;
       }
     }
-    .wallet-checker-tokens {    display: grid;
+    .wallet-checker-tokens {    
+      display: grid;
       grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
       .token-container {
         @apply border border-neutral-50;
         @apply shadow;
         border: solid 1px #000;
-        margin: 20px;
         border-radius: 5px;
+        &:hover {
+          cursor: pointer;
+        }
         .token-img {
           border-radius: 5px 5px 0px 0px;
         }
@@ -303,5 +308,45 @@
         }
       }
     }
+
+    .wallet-checker-properties-header {
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 30px;
+      text-align: left;
+    }
+    .wallet-checker-properties {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+      .property {
+        background-color: rgb(64 0 0 / 5%);
+        border-radius: 10px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0 14px;
+        text-align: center;
+        &:hover {
+          cursor: pointer;
+          @apply bg-warning-400;
+        }
+
+        .property-type {
+          font-size: 12px;
+          text-transform: uppercase; 
+        }
+        .property-value {
+          font-size: 16px;
+          font-weight: 700;
+          text-transform: uppercase; 
+        }
+      }
+    }
+
   }
 }
