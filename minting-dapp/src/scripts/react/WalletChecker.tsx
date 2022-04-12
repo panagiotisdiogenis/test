@@ -4,6 +4,7 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
     const [input, handleInput] = useState('')
     const [tokens, setTokens] = useState<any[]>([])
     const [properties, setProperties] = useState<any[]>([])
+    const [featured, setFeatured] = useState<any>()
 
     const handleSubmit = async () => {
         try {
@@ -19,6 +20,7 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
         const response = await fetch(url)
         if(!response.ok) throw new Error(response.statusText)
         const json = await response.json()
+        setFeatured(token)
         setProperties(json.attributes) 
     }
 
@@ -65,6 +67,11 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
     const renderProperties = () => {
         if (properties.length > 0) {
             return (
+                <>
+                <div className="featured-container">
+                    <img className="featured-image" src={`https://gateway.ipfs.io/ipfs/QmU6CBfcvrpUSUb2RJtAQkGMAvk7F7cp3ESfdNUU6zaX2x/${featured}.png`}  />
+                    <div className="featured-token">{`Puppy #${featured}`}</div>
+                </div>
                 <div className="wallet-checker-container">
                     <div className="wallet-checker-properties-header">Properties</div>
                     <div className="wallet-checker-properties">
@@ -79,6 +86,7 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
                         })}
                     </div>
                 </div>
+                </>
             )
         }
     }
