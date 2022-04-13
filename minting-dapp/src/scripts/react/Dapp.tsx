@@ -10,6 +10,10 @@ import MintWidget from './MintWidget';
 import Whitelist from '../lib/Whitelist';
 import Test from './Test';
 import WalletChecker from './WalletChecker';
+const Medium = require("../../images/medium.svg") as string;
+const Opensea = require("../../images/opensea.svg") as string;
+const Twitter = require("../../images/twitter.svg") as string;
+const Github = require("../../images/github.svg") as string;
 
 const ContractAbi = require('../../../../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
@@ -150,6 +154,19 @@ export default class Dapp extends React.Component<Props, State> {
     
     return (
       <>
+        <div className="nav">
+          <div className="left">
+            <div className="hamburger">
+              <span className="symbol">☰</span>
+            </div>
+          </div>
+          <div className="right">
+            <a className="icon"><img src={Opensea} /></a>
+            <a className="icon"><img src={Medium} /></a>
+            <a className="icon"><img src={Twitter} /></a>
+            <a className="icon"><img src={Github} /></a>
+          </div>
+        </div>
         {/* <Test walletTokens={this.state.walletTokens} /> */}
         {/* @ts-ignore */}
         {this.contract ? <WalletChecker walletOfOwner={this.contract.walletOfOwner} tokenURI={this.contract.tokenURI} /> : null}

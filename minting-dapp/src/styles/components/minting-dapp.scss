@@ -325,7 +325,7 @@
     }
     .wallet-checker-properties {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       grid-column-gap: 10px;
       grid-row-gap: 10px;
       .property {
@@ -376,6 +376,57 @@
       text-transform: uppercase;
     }
   }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    background: #fff;
+    text-align: left;
+    border-bottom: solid 1px #ccc;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    box-sizing: border-box;
+    padding: 0 10px;
+    .icon {
+      padding: 6px;
+      display: flex;
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+    }
+    .left {
+      .hamburger {
+        margin: 0;
+        padding: 10px 12px;
+        height: 40px;
+        background: white;
+        border-radius: 5px;
+        border: 1px solid #000000;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        .symbol {
+          font-size: 20px;
+        }
+      }
+    }
+    .right {
+      justify-content: flex-end;
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      img {
+        height: 20px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -400,6 +451,11 @@
       .featured-container {
         .featured-token {
           font-size: 24px;
+        }
+      }
+      .wallet-checker-search {
+        .wallet-checker-title {
+          font-size: 26px;
         }
       }
     }
