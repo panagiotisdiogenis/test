@@ -260,8 +260,9 @@
 
     @apply text-center;
     @apply bg-popupsbg;
-    @apply border border-neutral-50;
-    @apply shadow;
+    border: solid 1px #000;
+    // @apply border border-neutral-50;
+    // @apply shadow;
 
     .wallet-checker-search {
       margin: 20px;
@@ -283,6 +284,16 @@
         display: block;
       }
     }
+
+    .wallet-checker-tokens-header {
+      margin-bottom: 20px;
+      text-decoration: underline;
+      font-weight: 700;
+      font-size: 30px;
+      text-align: left;
+      font-style: italic;
+    }
+
     .wallet-checker-tokens {    
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -322,6 +333,7 @@
       font-weight: 700;
       font-size: 30px;
       text-align: left;
+      font-style: italic;
     }
     .wallet-checker-properties {
       display: grid;
@@ -385,7 +397,7 @@
     width: 100%;
     background: #fff;
     text-align: left;
-    border-bottom: solid 1px #ccc;
+    border-bottom: solid 1px #000;
     height: 60px;
     display: flex;
     justify-content: space-between;

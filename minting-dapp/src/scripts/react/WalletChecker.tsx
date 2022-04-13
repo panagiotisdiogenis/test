@@ -25,27 +25,30 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
     }
 
     const renderInput = () => {
-        return (
-            <div className="wallet-checker-container">
-                <div className="wallet-checker-search">
-                    <div className="wallet-checker-title">PUPPY VAULT</div>
-                    <div className="wallet-checker-subtitle">Enter your public wallet address (no ENS) to see your pups!</div>
-                    <input
-                        className="wallet-checker-input"
-                        type="text"
-                        placeholder="0x..."
-                        onChange={(e) => handleInput(e.target.value)}
-                    />
-                    <button className="wallet-checker-button" onClick={() => handleSubmit() }>Submit</button>
+        if (tokens.length === 0) {
+            return (
+                <div className="wallet-checker-container">
+                    <div className="wallet-checker-search">
+                        <div className="wallet-checker-title">PUPPY VAULT</div>
+                        <div className="wallet-checker-subtitle">Enter your public wallet address (no ENS) to see your pups!</div>
+                        <input
+                            className="wallet-checker-input"
+                            type="text"
+                            placeholder="0x..."
+                            onChange={(e) => handleInput(e.target.value)}
+                        />
+                        <button className="wallet-checker-button" onClick={() => handleSubmit() }>Submit</button>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 
     const renderTokens = () => {
         if (tokens.length > 0) { 
             return (
                 <div className="wallet-checker-container">
+                    <div className="wallet-checker-tokens-header">{`${input.slice(0, 5)}...${input.slice(-4)}`}</div>
                     <div className="wallet-checker-tokens">
                         {tokens.map((token: number, key: any) => {
                             return (
