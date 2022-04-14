@@ -14,6 +14,11 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
         catch {}
     }
 
+    const handleExit = () => {
+        setTokens([])
+        setProperties([])
+    }
+
     const fetchTraits = async (token: number | undefined) => {
         const nft = await props.tokenURI(token)
         let url = "https://gateway.pinata.cloud/ipfs/" + nft.slice(7)
@@ -21,7 +26,7 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
         if(!response.ok) throw new Error(response.statusText)
         const json = await response.json()
         setFeatured(token)
-        setProperties(json.attributes) 
+        setProperties(json.attributes)
     }
 
     const renderInput = () => {
@@ -73,7 +78,13 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
                 <>
                 <div className="featured-container">
                     <img className="featured-image" src={`https://gateway.ipfs.io/ipfs/QmU6CBfcvrpUSUb2RJtAQkGMAvk7F7cp3ESfdNUU6zaX2x/${featured}.png`}  />
-                    <div className="featured-token">{`Puppy #${featured}`}</div>
+                    <div className="featured-info">
+                        <div className="featured-token">{`Puppy #${featured}`}</div>
+                        <div className="featured-owner">
+                            <div className="featured-owner-title">OWNER</div>
+                            <div className="featured-owner-address">{`${input.slice(0, 5)}...${input.slice(-4)}`}</div>
+                        </div>
+                    </div>
                 </div>
                 <div className="wallet-checker-container">
                     <div className="wallet-checker-properties-header">Properties</div>
@@ -94,8 +105,17 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
         }
     }
 
+    const renderButton = () =>  {
+        if (tokens.length > 0) {
+            return (
+                <div onClick={() => handleExit()} className="exit">EXIT</div>
+            )
+        }
+    }
+
     return (
         <>
+            {renderButton()}
             {renderInput()}
             {renderTokens()}
             {renderProperties()}
