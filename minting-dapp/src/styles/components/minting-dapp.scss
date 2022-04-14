@@ -225,20 +225,18 @@
 
   .tokens-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     .tokens {
       margin: 5px;
       padding: 10px;
       border-radius: 5px;
-      border: solid 1px #ccc;
+      border: solid 1px #000;
       text-align: center;
       .tokens-img-wrapper {
-        border-radius: 5px;
+        border-radius: 5px 5px 0 0;
         background-color: black;
         .tokens-img {
-          border-radius: 5px;
-          height: 200px;
-          width: 200px;
+          border-radius: 5px 5px 0 0;
           margin: auto;
         }
         .opacity {
@@ -469,6 +467,9 @@
 
 @media screen and (max-width: 600px) {
   #minting-dapp {
+    .tokens-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
     .wallet-checker-container {
       .wallet-checker-tokens-header {
         font-size: 20px;

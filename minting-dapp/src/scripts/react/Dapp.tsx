@@ -8,7 +8,7 @@ import NetworkConfigInterface from '../../../../smart-contract/lib/NetworkConfig
 import CollectionStatus from './CollectionStatus';
 import MintWidget from './MintWidget';
 import Whitelist from '../lib/Whitelist';
-import Test from './Test';
+import Palooza from './Palooza';
 import WalletChecker from './WalletChecker';
 const Medium = require("../../images/medium.svg") as string;
 const Opensea = require("../../images/opensea.svg") as string;
@@ -167,7 +167,7 @@ export default class Dapp extends React.Component<Props, State> {
             <a className="icon"><img src={Github} /></a>
           </div>
         </div>
-        {/* <Test walletTokens={this.state.walletTokens} /> */}
+        {/* <Palooza walletTokens={this.state.walletTokens} /> */}
         {/* @ts-ignore */}
         {this.contract ? <WalletChecker walletOfOwner={this.contract.walletOfOwner} tokenURI={this.contract.tokenURI} /> : null}
         {this.isNotMainnet() ?

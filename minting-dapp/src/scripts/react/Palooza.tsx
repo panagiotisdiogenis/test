@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { db } from './firebase-config'
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 
-export default function Test(props: { walletTokens: number[] }) {
+export default function Palooza(props: { walletTokens: number[] }) {
     const [users, setUsers] = useState<any[]>([])
     const usersCollectionRef = collection(db, 'users')
     const getTokens = async () => {
