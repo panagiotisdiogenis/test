@@ -10,10 +10,6 @@ import MintWidget from './MintWidget';
 import Whitelist from '../lib/Whitelist';
 import Palooza from './Palooza';
 import WalletChecker from './WalletChecker';
-const Medium = require("../../images/medium.svg") as string;
-const Opensea = require("../../images/opensea.svg") as string;
-const Twitter = require("../../images/twitter.svg") as string;
-const Github = require("../../images/github.svg") as string;
 
 const ContractAbi = require('../../../../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
@@ -156,15 +152,18 @@ export default class Dapp extends React.Component<Props, State> {
       <>
         <div className="nav">
           <div className="left">
-            <div className="hamburger">
-              <span className="symbol">☰</span>
+            <a href="/"><img id="logoNav" src="/build/images/mainGif.gif" alt="Logo" /></a>
+            <div className="links">
+              <a href="/">HOME</a>
+              <a href="/">VAULT</a>
+              <a href="/">PALOOZA</a>
             </div>
           </div>
           <div className="right">
-            <a className="icon"><img src={Opensea} /></a>
-            <a className="icon"><img src={Medium} /></a>
-            <a className="icon"><img src={Twitter} /></a>
-            <a className="icon"><img src={Github} /></a>
+            <a className="icon"><img src="/build/images/opensea.svg" /></a>
+            <a className="icon"><img src="/build/images/medium.svg" /></a>
+            <a className="icon"><img src="/build/images/twitter.svg" /></a>
+            <a className="icon"><img src="/build/images/github.svg" /></a>
           </div>
         </div>
         {/* <Palooza walletTokens={this.state.walletTokens} /> */}

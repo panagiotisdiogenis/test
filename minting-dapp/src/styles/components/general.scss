@@ -29,6 +29,9 @@ main {
   @apply w-full;
   @apply max-w-md;
   margin-top: 70px;
+  width: 18%;
+  border: solid 2px #000;
+  border-radius: 50%;
 }
 
 span.emoji {

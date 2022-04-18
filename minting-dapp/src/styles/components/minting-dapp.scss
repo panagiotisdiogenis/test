@@ -451,6 +451,29 @@
           font-size: 20px;
         }
       }
+      #logoNav {
+        height: 40px;
+        border-radius: 50%;
+        border: solid 1px #000;
+      }
+      .links {
+        margin: 0 2px 0 8px;
+        display: flex;
+        a {
+          text-decoration: line-through;
+          pointer-events: none;
+          cursor: default;
+          font-size: 16px;
+          padding: 8px;
+          font-weight: 700;
+          color: #000;
+        }
+        a:first-child {
+          text-decoration: none;
+          cursor: pointer;
+          pointer-events: initial;
+        }
+      }
     }
     .right {
       justify-content: flex-end;
@@ -508,5 +531,11 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  #minting-dapp .nav .left .links {
+      display: none;
   }
 }
