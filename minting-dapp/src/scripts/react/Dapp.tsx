@@ -10,6 +10,8 @@ import MintWidget from './MintWidget';
 import Whitelist from '../lib/Whitelist';
 import Palooza from './Palooza';
 import WalletChecker from './WalletChecker';
+import Nav from './Nav';
+import Home from './Home';
 
 const ContractAbi = require('../../../../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
@@ -150,22 +152,8 @@ export default class Dapp extends React.Component<Props, State> {
     
     return (
       <>
-        <div className="nav">
-          <div className="left">
-            <a href="/"><img id="logoNav" src="/build/images/mainGif.gif" alt="Logo" /></a>
-            <div className="links">
-              <a href="/">HOME</a>
-              <a href="/">VAULT</a>
-              <a href="/">PALOOZA</a>
-            </div>
-          </div>
-          <div className="right">
-            <a className="icon"><img src="/build/images/opensea.svg" /></a>
-            <a className="icon"><img src="/build/images/medium.svg" /></a>
-            <a className="icon"><img src="/build/images/twitter.svg" /></a>
-            <a className="icon"><img src="/build/images/github.svg" /></a>
-          </div>
-        </div>
+        <Nav />
+        <Home />
         {/* <Palooza walletTokens={this.state.walletTokens} /> */}
         {/* @ts-ignore */}
         {this.contract ? <WalletChecker walletOfOwner={this.contract.walletOfOwner} tokenURI={this.contract.tokenURI} /> : null}

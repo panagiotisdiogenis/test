@@ -5,8 +5,29 @@ body {
   @apply font-sans;
   @apply text-neutral-800;
   @apply bg-gradient-to-b from-neutral-100 via-neutral-100 to-neutral-200;
+  // animation-name: backgroundColorPalette;
+	// animation-duration: 10s;
+	// animation-iteration-count: infinite;
+	// animation-direction: alternate;
+	// animation-timing-function: linear;
 }
-
+// @keyframes backgroundColorPalette {
+// 	0% {
+// 		background: #e0cb6d;
+// 	}
+// 	25% {
+// 		background: #edb066;
+// 	}
+// 	50% {
+// 		background: #f5926e;
+// 	}
+// 	75% {
+// 		background: #f4727d;
+// 	}
+// 	100% {
+// 		background: #8067d8;
+// 	}
+// }
 a, a:link, a:visited {
   @apply font-semibold;
   @apply text-primary-600;

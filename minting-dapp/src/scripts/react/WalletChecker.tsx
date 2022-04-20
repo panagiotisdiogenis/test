@@ -73,6 +73,7 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
     }
 
     const renderProperties = () => {
+        // https://gw3.easy-ipfs.com/ipfs/QmU6CBfcvrpUSUb2RJtAQkGMAvk7F7cp3ESfdNUU6zaX2x/2.png
         if (properties.length > 0) {
             return (
                 <>
