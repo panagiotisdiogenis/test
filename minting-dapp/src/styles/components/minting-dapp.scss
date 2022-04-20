@@ -234,7 +234,7 @@
       left: 50%;
       animation: confetti 5s ease-in-out -2s infinite;
       transform-origin: left top;
-      opacity: 0.5;
+      // opacity: 0.5;
       border-radius: 1px;
     }
     .confetti:nth-child(1) {
@@ -277,6 +277,32 @@
     }
   }
 
+  .social-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    text-align: center;
+    .medium, .twitter, .opensea, .github {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      background-color: #fff;
+      height: 120px;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: 700;
+      border: solid 1px #000;
+      border-radius: 5px;
+      text-transform: uppercase;
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
   .header {
     text-align: center;
     margin: 40px 10% 0px;
@@ -291,6 +317,13 @@
       font-size: 90px;
       font-weight: 800;
       margin-top: -40px;
+      animation: color-change 5s infinite;
+      animation-direction: alternate;
+      @keyframes color-change {
+        0% { color: #6D4BD7; }
+        50% { color: #ED5488; }
+        100% { color: #F6916C; }
+      }
     }
 
     h3 {
@@ -315,16 +348,19 @@
     img {
       display: flex;
       flex-direction: column;
+      &:hover {
+        cursor: pointer;
+        transform: scale(0.99);
+      }
     }
   }
 
   .faq {
     background-color: #fff;
     padding: 60px 60px 50px;
-    box-sizing: border-box;
-    border: 2px solid #400000;
+    border: 1px solid #000;
     position: relative;
-    margin-top: 2%;
+    border-radius: 10px;
     h1 {
       font-size: 80px;
       line-height: 80%;
@@ -341,11 +377,8 @@
     }
     .section {
       padding: 20px 10px;
-      transition: all .6s, background .2s;
-      border: 0;
       border: 2px solid transparent;
-      border-bottom: 2px solid #400000;
-      margin: 0;
+      border-bottom: 1px solid #000;
       &:hover {
         cursor: pointer;
         background-color: #f1f5f9;
@@ -356,7 +389,24 @@
         max-height: 600px;
         margin-top: 20px;
         margin-bottom: 20px;
+        opacity: 1;
+        animation-name: fadeIn;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 0.7s;
       }
+      
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+    .section:last-of-type {
+      border-bottom: 0;
     }
   }
 
@@ -414,8 +464,6 @@
     @apply text-center;
     @apply bg-popupsbg;
     border: solid 1px #000;
-    // @apply border border-neutral-50;
-    // @apply shadow;
 
     .wallet-checker-search {
       margin: 20px;
@@ -554,7 +602,7 @@
     width: 100%;
     background: #fff;
     text-align: left;
-    border-bottom: solid 1px #000;
+    border-bottom: solid 2px #000;
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -570,20 +618,6 @@
       }
     }
     .left {
-      .hamburger {
-        margin: 0;
-        padding: 10px 12px;
-        height: 40px;
-        background: white;
-        border-radius: 5px;
-        border: 1px solid #000000;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        .symbol {
-          font-size: 20px;
-        }
-      }
       #logoNav {
         height: 40px;
         border-radius: 50%;
@@ -675,6 +709,16 @@
       h3 {
         font-size: 18px;
       }
+    }
+    .confetti-container {
+      .confetti {
+        height: 10px;
+        width: 10px;
+      }
+    }
+
+    .social-container {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

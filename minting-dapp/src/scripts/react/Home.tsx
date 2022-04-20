@@ -15,7 +15,7 @@ export default function Home () {
         "What is the technology?": "Puppies are ERC-721A tokens on the Ethereum blockchain. Special events, will update the metadata and image of each corresponding puppy on IPFS. The metadata will save a history of your evolved puppy, and all previous versions will be hosted on IPFS.",
         "What is a Palooza?": "Special events are dynamic virtual events on the blockchain that evolve your puppy forever! Each event is exclusive but beware - your puppy will not come back the same.",
         "Do Palooza's cost gas?": "Nope. It's free! You only need to connect your wallet to verify ownership (which doesn't have any gas fees). After the Palooza, we will update the contract to connect the new metadata on IPFS.",
-        "Wen Puppy Palooza": "Don't ask us - ask the puppies. Puppy Palooza time & dates are spontaneous."
+        "Wen Puppy Palooza?": "Don't ask us. Ask the puppies. Puppy Palooza time & dates are spontaneous."
     }
 
     const renderFAQ = () => {
@@ -34,34 +34,37 @@ export default function Home () {
         )
     }
 
+    const renderSocial = () => {
+        return (
+            <div className="social-container">
+                <div className="medium">Medium</div>
+                <div className="opensea">OpenSea</div>
+                <div className="twitter">Twitter</div>
+                <div className="github">Github</div>
+            </div>
+        )
+    }
+
     return (
         <>
             <div className='confetti-container'>
-                <div className='confetti'></div>
-                <div className='confetti'></div>
-                <div className='confetti'></div>
-                <div className='confetti'></div>
-                <div className='confetti'></div>
-                <div className='confetti'></div>
-                <div className='confetti'></div>
-                <div className='confetti'></div>
-                <div className='confetti'></div>
-                <div className='confetti'></div>
+                {[...Array(10)].map(() => <div className="confetti"></div>)}
             </div>
             <div className='header'>
                 <h1>Puppy</h1>
-                <h2>Palooza</h2>
-                <h3>Generating Quality Traffic From Top Sites and Reach 500M+ Daily Active Users.</h3>
+                <h2>PALOOZA</h2>
+                <h3>Puppies Are Dynamic NFTs That Evolve By Attending Paloozas.</h3>
                 <button className='twitter'>Twitter</button>
             </div>
             <div className="pup">
                 {[...Array(9)].map((item, i) => {
                     return (
-                    <img className="pup-img" src={`https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/${i+1}.png`} />
+                        <img className="pup-img" src={`https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/${i+1}.png`} />
                     )
                 })}
             </div>
             {renderFAQ()}
+            {renderSocial()}
         </>
     )
 }
