@@ -24,7 +24,7 @@ export default function Home () {
                 <h1>FAQ</h1>
                 {Object.keys(faqs).map((faq, i) => {
                     return (
-                        <div className="section" onClick={() => toggle(i)}>
+                        <div key={i} className="section" onClick={() => toggle(i)}>
                             <h2>{faq}</h2>
                             {sections[i] ? <p>{faqs[faq]}</p> : null}
                         </div>
@@ -48,7 +48,7 @@ export default function Home () {
     return (
         <>
             <div className='confetti-container'>
-                {[...Array(10)].map(() => <div className="confetti"></div>)}
+                {[...Array(10)].map((c, key) => <div key={key} className="confetti"></div>)}
             </div>
             <div className='header'>
                 <h1>Puppy</h1>
@@ -57,9 +57,9 @@ export default function Home () {
                 <button className='twitter'>Twitter</button>
             </div>
             <div className="pup">
-                {[...Array(9)].map((item, i) => {
+                {[...Array(9)].map((item, key) => {
                     return (
-                        <img className="pup-img" src={`https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/${i+1}.png`} />
+                        <img key={key} className="pup-img" src={`https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/${key+1}.png`} />
                     )
                 })}
             </div>
