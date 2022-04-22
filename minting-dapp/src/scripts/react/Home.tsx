@@ -34,6 +34,26 @@ export default function Home () {
         )
     }
 
+    const renderTeam = () => {
+        return (
+            <div className="team-container">
+                <h1>TEAM</h1>
+                <div>
+                    <a>
+                        <img src="https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/1.png" />
+                        <h2>PAMP</h2>
+                        <p>@pamp</p>
+                    </a>
+                    <a>
+                        <img src="https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/3.png" />
+                        <h2>RADESAI</h2>
+                        <p>@radesai</p>
+                    </a>
+                </div>
+            </div>
+        )
+    }
+
     const renderSocial = () => {
         return (
             <div className="social-container">
@@ -64,6 +84,7 @@ export default function Home () {
                 })}
             </div>
             {renderFAQ()}
+            {renderTeam()}
             {renderSocial()}
         </>
     )

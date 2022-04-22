@@ -273,6 +273,47 @@
     }
   }
 
+  .team-container {
+    padding: 60px 60px 50px;
+    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 10px;
+    h1 {
+      text-align: center;
+      font-size: 80px;
+      line-height: 80%;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+    div {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-column-gap: 10%;
+      a {
+        text-align: center;
+        color: #000;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 40px;
+        img {
+          border-radius: 50%;
+          border: solid 2px #000;
+          &:hover {
+            transform: scale(1.02);
+          }
+        }
+        h2 {
+          margin: 20px 0 0;
+          font-size: 30px;
+        }
+        p {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
   .social-container {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -605,7 +646,7 @@
     box-sizing: border-box;
     padding: 0 10px;
     .icon {
-      padding: 6px;
+      padding: 10px;
       display: flex;
       &:hover {
         transform: scale(1.1);
@@ -621,12 +662,14 @@
         margin-top: -15px;
       }
       .links {
-        margin: 0 2px 0 8px;
+        margin: 0 2px 0 10px;
         display: flex;
         a {
-          text-decoration: line-through;
-          pointer-events: none;
-          cursor: default;
+          &:hover {
+            cursor: not-allowed;
+            color: #ED5488;
+          }
+          text-decoration: none;
           font-size: 16px;
           padding: 8px;
           font-weight: 700;
@@ -636,6 +679,9 @@
           text-decoration: none;
           cursor: pointer;
           pointer-events: initial;
+        }
+        button {
+          margin-left: 10px;
         }
       }
     }
@@ -758,10 +804,26 @@
   }
 }
 @media screen and (max-width: 1000px) {
-  #minting-dapp .faq {
-    padding: 40px 20px;
-    h1 {
-      font-size: 50px;
+  #minting-dapp {
+    .faq {
+      padding: 40px 20px;
+      h1 {
+        font-size: 50px;
+      }
+    }
+    .team-container {
+      padding: 40px 20px;
+      h1 {
+        font-size: 50px;
+      }
+      div {
+        a {
+          padding: 20px;
+          h2 {
+            font-size: 20px;
+          }
+        }
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Nav () {
+export default function Nav (props: { connectWallet: () => Promise<any> }) {
 
 	const [menuStatus, setMenuStatus] = useState(false)
 
@@ -14,6 +14,7 @@ export default function Nav () {
 						<a href="/">HOME</a>
 						<a href="/">VAULT</a>
 						<a href="/">PALOOZA</a>
+						<button onClick={() => props.connectWallet()}>Connect</button>
 					</div>
 				</div>
 				<div className="right">

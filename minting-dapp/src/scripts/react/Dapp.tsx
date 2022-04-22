@@ -152,7 +152,7 @@ export default class Dapp extends React.Component<Props, State> {
     
     return (
       <>
-        <Nav />
+        <Nav connectWallet={() => this.connectWallet()} />
         <Home />
         {/* <Palooza walletTokens={this.state.walletTokens} /> */}
         {/* @ts-ignore */}
@@ -211,7 +211,7 @@ export default class Dapp extends React.Component<Props, State> {
           </>
         : null}
 
-        {!this.isWalletConnected() || !this.isSoldOut() ?
+        {/*!this.isWalletConnected() || !this.isSoldOut() ?
           <div className="no-wallet">
             {!this.isWalletConnected() ? <button className="primary" disabled={this.provider === undefined} onClick={() => this.connectWallet()}>Connect Wallet</button> : null}
             
@@ -236,7 +236,7 @@ export default class Dapp extends React.Component<Props, State> {
               </div>
               : null}
           </div>
-          : null}
+            : null */}
       </>
     );
   }
@@ -284,7 +284,7 @@ export default class Dapp extends React.Component<Props, State> {
 
       this.initWallet();
     } catch (e) {
-      this.setError(e);
+      // this.setError(e);
     }
   }
 
