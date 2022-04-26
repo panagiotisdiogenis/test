@@ -39,6 +39,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "firebase": "^9.6.10"
+        "firebase": "^9.6.10",
+        "react-router-dom": "^6.3.0"
     }
 }

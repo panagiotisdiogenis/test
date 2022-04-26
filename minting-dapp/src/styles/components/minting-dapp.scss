@@ -3,12 +3,12 @@
   @apply mt-6 mx-auto;
   @apply w-full;
   @apply max-w-5xl;
-
+  margin-top: 5rem;
   .no-wallet {
     @apply flex flex-col;
     @apply px-4 py-6;
     @apply rounded-lg;
-    
+    @apply my-12;
     @apply bg-popupsbg;
     @apply border border-neutral-50;
     @apply shadow;
@@ -144,12 +144,9 @@
     &.not-mainnet {
       @apply bg-warning-400;
       @apply border-warning-500;
-
       @apply text-warningtxt;
-
       .small {
         @apply block;
-
         @apply text-sm;
       }
     }
@@ -342,7 +339,7 @@
 
   .header {
     text-align: center;
-    margin: 40px 10% 0px;
+    margin: 0px 10% 0px;
     h1 {
       font-size: 64px;
       font-weight: 800;
@@ -499,6 +496,7 @@
 
     @apply text-center;
     @apply bg-popupsbg;
+
     border: solid 1px #000;
 
     .wallet-checker-search {
@@ -809,6 +807,9 @@
       padding: 40px 20px;
       h1 {
         font-size: 50px;
+      }
+      h2 {
+        font-size: 20px;
       }
     }
     .team-container {

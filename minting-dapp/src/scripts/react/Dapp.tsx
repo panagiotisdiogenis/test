@@ -12,6 +12,7 @@ import Palooza from './Palooza';
 import WalletChecker from './WalletChecker';
 import Nav from './Nav';
 import Home from './Home';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const ContractAbi = require('../../../../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
@@ -148,15 +149,9 @@ export default class Dapp extends React.Component<Props, State> {
     });
   }
 
-  render() {
-    
+  renderMint = () => {
     return (
       <>
-        <Nav connectWallet={() => this.connectWallet()} />
-        <Home />
-        {/* <Palooza walletTokens={this.state.walletTokens} /> */}
-        {/* @ts-ignore */}
-        {this.contract ? <WalletChecker walletOfOwner={this.contract.walletOfOwner} tokenURI={this.contract.tokenURI} /> : null}
         {this.isNotMainnet() ?
           <div className="not-mainnet">
             You are not connected to the main network.
@@ -210,8 +205,7 @@ export default class Dapp extends React.Component<Props, State> {
             }
           </>
         : null}
-
-        {/*!this.isWalletConnected() || !this.isSoldOut() ?
+        {!this.isWalletConnected() || !this.isSoldOut() ?
           <div className="no-wallet">
             {!this.isWalletConnected() ? <button className="primary" disabled={this.provider === undefined} onClick={() => this.connectWallet()}>Connect Wallet</button> : null}
             
@@ -236,8 +230,25 @@ export default class Dapp extends React.Component<Props, State> {
               </div>
               : null}
           </div>
-            : null */}
+            : null}
       </>
+    )
+  }
+
+  render() {
+    
+    return (
+      <Router>
+        <Nav connectWallet={() => this.connectWallet()} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* @ts-ignore */}
+          {this.contract && <Route path="/vault" element={<WalletChecker walletOfOwner={this.contract.walletOfOwner} tokenURI={this.contract.tokenURI} />} />}
+          <Route path="/palooza" element={<Palooza walletTokens={this.state.walletTokens} />} />
+          <Route path="/mint" element={this.renderMint()} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Router>
     );
   }
 
