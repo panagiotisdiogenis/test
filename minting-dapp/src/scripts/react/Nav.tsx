@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { NavLink } from 'react-router-dom';
 
 export default function Nav (props: { connectWallet: () => Promise<any> }) {
 
@@ -11,9 +12,9 @@ export default function Nav (props: { connectWallet: () => Promise<any> }) {
 					<div className="hamburger" onClick={() => setMenuStatus(!menuStatus)}>☰</div>
 					<a href="/"><img id="logoNav" src="/build/images/icon.png" alt="Logo" /></a>
 					<div className="links">
-						<a href="/">HOME</a>
-						<a href="/">VAULT</a>
-						<a href="/">PALOOZA</a>
+						<NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>HOME</NavLink>
+						<NavLink to="/vault" className={({ isActive }) => (isActive ? 'active' : '')}>VAULT</NavLink>
+						<NavLink to="/palooza" className={({ isActive }) => (isActive ? 'active' : '')}>PALOOZA</NavLink>
 						<button onClick={() => props.connectWallet()}>Connect</button>
 					</div>
 				</div>
@@ -25,9 +26,10 @@ export default function Nav (props: { connectWallet: () => Promise<any> }) {
 				</div>
 			</div>
           	{menuStatus ? <div className="menu">
-				<a href="/">HOME</a>
-				<a href="/">VAULT</a>
-				<a href="/">PALOOZA</a>
+			  	<NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>HOME</NavLink>
+				<NavLink to="/vault" className={({ isActive }) => (isActive ? 'active' : '')}>VAULT</NavLink>
+				<NavLink to="/palooza" className={({ isActive }) => (isActive ? 'active' : '')}>PALOOZA</NavLink>
+				<a onClick={() => props.connectWallet()}>CONNECT</a>
 			</div> : null}
         </>
     )
