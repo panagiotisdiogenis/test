@@ -350,6 +350,7 @@ export default class Dapp extends React.Component<Props, State> {
       isPaused: await this.contract.paused(),
       isWhitelistMintEnabled: await this.contract.whitelistMintEnabled(),
       isUserInWhitelist: Whitelist.contains(this.state.userAddress ?? ''),
+      /* @ts-ignore */
       walletTokens: walletOwnerTokens.map(t => Number(t)),
     });
   }
