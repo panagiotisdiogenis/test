@@ -334,11 +334,15 @@ export default class Dapp extends React.Component<Props, State> {
 
       return;
     }
-
+// @ts-ignore
     this.contract = new ethers.Contract(
+      // @ts-ignore
       CollectionConfig.contractAddress!,
+      // @ts-ignore
       ContractAbi,
+      // @ts-ignore
       this.provider.getSigner(),
+      // @ts-ignore
     ) as NftContractType;
 
     let walletOwnerTokens = await this.contract.walletOfOwner(walletAccounts[0]) // The Token IDs you own
