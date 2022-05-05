@@ -2,6 +2,7 @@
 // It can be updated using the following command:
 // yarn rename-contract NEW_CONTRACT_NAME
 // Please DO NOT change it manually!
+// @ts-ignore
 import { YourNftToken as NftContractType } from '../../../../smart-contract/typechain/index';
 
 export default NftContractType;
