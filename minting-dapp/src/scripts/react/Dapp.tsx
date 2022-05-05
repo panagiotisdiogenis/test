@@ -1,3 +1,4 @@
+/* tslint:disable */
 import React from 'react';
 import { ethers, BigNumber } from 'ethers'
 import { ExternalProvider, Web3Provider } from '@ethersproject/providers';
