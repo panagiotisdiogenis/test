@@ -53,6 +53,7 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
         if (tokens.length > 0) { 
             return (
                 <div className="wallet-checker-container">
+                    {renderButton()}
                     <div className="wallet-checker-tokens-header">{`${input.slice(0, 5)}...${input.slice(-4)}`}</div>
                     <div className="wallet-checker-tokens">
                         {tokens.map((token: number, key: any) => {
@@ -116,7 +117,6 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
 
     return (
         <>
-            {renderButton()}
             {renderInput()}
             {renderTokens()}
             {renderProperties()}
