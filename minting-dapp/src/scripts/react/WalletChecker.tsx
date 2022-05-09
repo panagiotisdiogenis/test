@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function Test(props: { walletOfOwner: (...args: any) => [], tokenURI: (...args: any) => []}) {
+export default function Test(props: { walletOfOwner: (...args: any) => [], tokenURI: (...args: any) => [], connectWallet: () => Promise<any> }) {
     const [input, handleInput] = useState('')
     const [tokens, setTokens] = useState<any[]>([])
     const [properties, setProperties] = useState<any[]>([])
@@ -35,14 +35,18 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
                 <div className="wallet-checker-container">
                     <div className="wallet-checker-search">
                         <div className="wallet-checker-title">PUPPY VAULT</div>
-                        <div className="wallet-checker-subtitle">Enter your public wallet address (no ENS) to see your pups!</div>
-                        <input
-                            className="wallet-checker-input"
-                            type="text"
-                            placeholder="0x..."
-                            onChange={(e) => handleInput(e.target.value)}
-                        />
-                        <button className="wallet-checker-button" onClick={() => handleSubmit() }>Submit</button>
+                        {!props.walletOfOwner ? renderConnect() : (
+                            <>
+                                <div className="wallet-checker-subtitle">Enter your public wallet address (no ENS) to see your pups!</div>
+                                <input
+                                    className="wallet-checker-input"
+                                    type="text"
+                                    placeholder="0x..."
+                                    onChange={(e) => handleInput(e.target.value)}
+                                />
+                                <button className="wallet-checker-button" onClick={() => handleSubmit() }>Submit</button>
+                            </>
+                        )}
                     </div>
                 </div>
             )
@@ -115,11 +119,19 @@ export default function Test(props: { walletOfOwner: (...args: any) => [], token
         }
     }
 
+    const renderConnect = () => {
+        console.log(props)
+        return (
+            <button className="wallet-checker-button" onClick={() => props.connectWallet()}>Connect</button>
+        )
+
+    }
+
     return (
-        <>
+        <div className="wallet-checker-wrapper">
             {renderInput()}
             {renderTokens()}
             {renderProperties()}
-        </>
+        </div>
     )
 }
