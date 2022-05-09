@@ -84,6 +84,29 @@ export default function Home () {
         )
     }
 
+    const renderFooter = () => {
+        let info = {
+            "Vault": "The Puppy Vault is currently locked.",
+            "Palooza": "The first Palooza hasn't been announced yet.",
+            "Collaboration": "If you're interested in collaborating with Puppy Palooza, shoot us an inquiry.",
+        }
+        return (
+            <>
+                {Object.keys(info).map((title) => {
+                    return (
+                        <div className={`contact ${title.toLowerCase()}`}>
+                            <div className="wrapper">
+                                <h1>{title}</h1>
+                                {/* @ts-ignore */}
+                                <h2>{info[title]}</h2>
+                            </div>
+                        </div>
+                    )
+                })}
+            </>
+        )
+    }
+
     return (
         <>
             <div className="wrapper">
@@ -106,13 +129,7 @@ export default function Home () {
                 {renderFAQ()}
                 {renderTeam()}
             </div>
-            <div className="contact">
-                <div className="wrapper">
-                    <h1>Collaboration</h1>
-                    <h2>If you're interested in collaborating with Puppy Palooza, shoot us an inquiry.</h2>
-                    <button>Email</button>
-                </div>
-            </div>
+            {renderFooter()}
             {renderSocial()}
         </>
     )
