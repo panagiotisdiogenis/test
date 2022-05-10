@@ -345,19 +345,15 @@
         font-size: 60px;
         font-weight: 700;
         text-transform: uppercase;
+        display: inline;
       }
       h2 {
         font-size: 20px;
       }
-      button {
-        margin: auto;
-        width: 150px;
-        background-color: #ED5488;
-        color: #fff;
-        margin-top: 20px;
-        &:hover {
-          background-color: #ED4980;
-        }
+      span {
+        font-size: 60px;
+        display: none;
+        padding-left: 20px;
       }
     }
   }
@@ -375,8 +371,8 @@
 
   .contact:hover {
     cursor: pointer;
-    h1 {
-      text-decoration: underline;
+    span {
+      display: inline;
     }
   }
   a:hover {

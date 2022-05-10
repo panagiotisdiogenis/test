@@ -98,7 +98,10 @@ export default function Home () {
                         <NavLink to={path}>
                             <div className={`contact ${title.toLowerCase()}`}>
                                 <div className="wrapper">
-                                    <h1>{title}</h1>
+                                    <div>
+                                        <h1>{title}</h1>
+                                        <span>→</span>
+                                    </div>
                                     {/* @ts-ignore */}
                                     <h2>{info[title]}</h2>
                                 </div>
