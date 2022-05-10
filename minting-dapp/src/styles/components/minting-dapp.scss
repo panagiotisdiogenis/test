@@ -308,6 +308,7 @@
         box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
         --tw-shadow: 0 0 8px rgba(91,97,110,.06),0 4px 16px rgba(91,97,110,.06);
         --tw-shadow-colored: 0 0 8px var(--tw-shadow-color),0 4px 16px var(--tw-shadow-color);
+        border: solid 1px;
         img {
           border-radius: 5px;
           // border: solid 2px #000;
@@ -334,6 +335,7 @@
       padding: 5rem 1.5rem;
       max-width: 50rem;
       margin: auto;
+      padding: 60px;
       img {
         margin: auto;
         height: 200px;
@@ -376,6 +378,9 @@
     h1 {
       text-decoration: underline;
     }
+  }
+  a:hover {
+    text-decoration-line: none;
   }
   .social-container {
     // display: grid;
@@ -493,6 +498,7 @@
     // border: 1px solid #000;
     // position: relative;
     border-radius: 10px;
+    border: solid 1px;
     box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
     --tw-shadow: 0 0 8px rgba(91,97,110,.06),0 4px 16px rgba(91,97,110,.06);
     --tw-shadow-colored: 0 0 8px var(--tw-shadow-color),0 4px 16px var(--tw-shadow-color);
@@ -918,10 +924,10 @@
     }
     .contact .wrapper {
       h1 {
-        font-size: 30px;
+        font-size: 26px;
       }
       h2 {
-        font-size: 18px;
+        font-size: 16px;
       }
     }
   }
@@ -935,12 +941,12 @@
 @media screen and (max-width: 1000px) {
   #minting-dapp {
     .faq {
-      padding: 40px 20px;
+      padding: 40px 40px;
       h1 {
         font-size: 50px;
       }
       h2 {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
     .team-container {
@@ -951,7 +957,7 @@
       div {
         grid-template-columns: repeat(1, minmax(0, 1fr));
         a {
-          padding: 60px;
+          padding: 40px;
           h2 {
             font-size: 20px;
           }

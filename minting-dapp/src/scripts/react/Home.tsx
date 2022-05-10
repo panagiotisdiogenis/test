@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { NavLink } from 'react-router-dom'
 
 export default function Home () {
 
@@ -78,7 +79,6 @@ export default function Home () {
                         <div className="twitter">Twitter</div>
                         <div className="github">Github</div>
                     </div>
-                    {/*<img src="/build/images/icon.png" alt="Logo" />*/}
                 </div>
             </div>
         )
@@ -88,19 +88,22 @@ export default function Home () {
         let info = {
             "Vault": "The Puppy Vault is currently locked.",
             "Palooza": "The first Palooza hasn't been announced yet.",
-            "Collaboration": "If you're interested in collaborating with Puppy Palooza, shoot us an inquiry.",
+            "Collaboration": "Want to collab with Puppy Palooza? Shoot us an inquiry.",
         }
         return (
             <>
-                {Object.keys(info).map((title) => {
+                {Object.keys(info).map((title, i) => {
+                    let path = i !== 2 ? `/${title.toLowerCase()}` : '/';
                     return (
-                        <div className={`contact ${title.toLowerCase()}`}>
-                            <div className="wrapper">
-                                <h1>{title}</h1>
-                                {/* @ts-ignore */}
-                                <h2>{info[title]}</h2>
+                        <NavLink to={path}>
+                            <div className={`contact ${title.toLowerCase()}`}>
+                                <div className="wrapper">
+                                    <h1>{title}</h1>
+                                    {/* @ts-ignore */}
+                                    <h2>{info[title]}</h2>
+                                </div>
                             </div>
-                        </div>
+                        </NavLink>
                     )
                 })}
             </>
@@ -122,7 +125,7 @@ export default function Home () {
                 <div className="pup">
                     {[...Array(9)].map((item, key) => {
                         return (
-                            <img key={key} className="pup-img" src={`https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/${key+1}.png`} />
+                            <img key={key} className="pup-img" src={`https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/${key+10}.png`} />
                         )
                     })}
                 </div>
