@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { NavLink } from 'react-router-dom';
 
-export default function Nav (props: { connectWallet: () => Promise<any> }) {
+export default function Nav () {
 
 	const [menuStatus, setMenuStatus] = useState(false)
 
@@ -15,7 +15,6 @@ export default function Nav (props: { connectWallet: () => Promise<any> }) {
 						<NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>HOME</NavLink>
 						<NavLink to="/vault" className={({ isActive }) => (isActive ? 'active' : '')}>VAULT</NavLink>
 						<NavLink to="/palooza" className={({ isActive }) => (isActive ? 'active' : '')}>PALOOZA</NavLink>
-						<button onClick={() => props.connectWallet()}>Connect</button>
 					</div>
 				</div>
 				<div className="right">
@@ -29,7 +28,6 @@ export default function Nav (props: { connectWallet: () => Promise<any> }) {
 			  	<NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>HOME</NavLink>
 				<NavLink to="/vault" className={({ isActive }) => (isActive ? 'active' : '')}>VAULT</NavLink>
 				<NavLink to="/palooza" className={({ isActive }) => (isActive ? 'active' : '')}>PALOOZA</NavLink>
-				<a onClick={() => props.connectWallet()}>CONNECT</a>
 			</div> : null}
         </>
     )

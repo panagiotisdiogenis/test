@@ -240,12 +240,12 @@ export default class Dapp extends React.Component<Props, State> {
     console.log(this.contract)
     return (
       <Router>
-        <Nav connectWallet={() => this.connectWallet()} />
+        <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
           {/* @ts-ignore */}
           <Route path="/vault" element={<WalletChecker walletOfOwner={(this.contract ? this.contract.walletOfOwner : null)} tokenURI={(this.contract ? this.contract.tokenURI : null)} connectWallet={() => this.connectWallet()} />} />
-          <Route path="/palooza" element={<Palooza walletTokens={this.state.walletTokens} />} />
+          <Route path="/palooza" element={<Palooza walletOfOwner={(this.contract ? this.contract.walletOfOwner : null)} walletTokens={this.state.walletTokens} connectWallet={() => this.connectWallet()} />} />
           <Route path="/mint" element={this.renderMint()} />
           <Route path="*" element={<Home />} />
         </Routes>

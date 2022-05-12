@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { db } from './firebase-config'
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 
-export default function Palooza(props: { walletTokens: number[] }) {
+export default function Palooza(props: { walletOfOwner: (...args: any) => [], walletTokens: number[], connectWallet: () => Promise<any> }) {
     const [users, setUsers] = useState<any[]>([])
     const usersCollectionRef = collection(db, 'users')
     const getTokens = async () => {
@@ -59,7 +59,20 @@ export default function Palooza(props: { walletTokens: number[] }) {
         }
     }
 
+    const renderConnect = () => {
+        return (
+            <div className="wallet-checker-wrapper">
+                <div className="wallet-checker-container">
+                    <div className="wallet-checker-search">
+                        <div className="wallet-checker-title">PUPPY PALOOZA</div>
+                    <button className="wallet-checker-button" onClick={() => props.connectWallet()}>Connect</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
-        <div className="tokens-container">{renderItems()}</div>
+        <>{!props.walletOfOwner ? renderConnect() : <div className="tokens-container">{renderItems()}</div>}</>
     )
 }
