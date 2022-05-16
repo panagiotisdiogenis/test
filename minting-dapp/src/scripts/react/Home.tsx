@@ -126,7 +126,9 @@ export default function Home () {
                     <h1>Puppy</h1>
                     <h2>PALOOZA</h2>
                     <h3>Puppies Are Dynamic NFTs That Evolve By Attending Paloozas.</h3>
-                    <button className='twitter'>Twitter</button>
+                    <a href="https://twitter.com/puppypaloozanft" target="_blank" rel="noopener noreferrer">
+                        <button className='twitter'>Twitter</button>
+                    </a>
                 </div>
                 <div className="pup">
                     {[...Array(9)].map((item, key) => {
