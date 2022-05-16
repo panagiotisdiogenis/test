@@ -11,7 +11,7 @@ export default function Home () {
         setSections(copy)
     }
 
-    const faqs : any = {
+    const faqs: any = {
         "What are puppies?": "Puppy Palooza is a generative collection of #,### NFTs. Puppies are randomly curated from 100+ different traits. Each puppy is unique and minted as an NFT on the Ethereum blockchain. Puppies are dynamic NFTs and can change their traits over time by attending special events. Special events allows puppies to inject their own art into the collection.",
         "Puppy Technology?": "Puppies are ERC-721A tokens on the Ethereum blockchain. Special events, will update the metadata and image of each corresponding puppy on IPFS. The metadata will save a history of your evolved puppy, and all previous versions will be hosted on IPFS.",
         "What Palooza?": "Special events are dynamic virtual events on the blockchain that evolve your puppy forever! Each event is exclusive but beware - your puppy will not come back the same.",
@@ -22,6 +22,12 @@ export default function Home () {
         "Why Puppies?": "We think long and hard, debate and argue over phone, text, and any platform you can name from discord to playstation lobbies, and choosing a representative for our first web3 project was no exception.",
         "Wen Puppy Palooza?": "Don't ask us. Ask the puppies. Puppy Palooza time & dates are spontaneous.",
         "Palooza Roadmap?": "As with all things Palooza, we like to under promise and over deliver. To get a sneak peak into our future and unique take on the Metaverse, please stay tuned for future community announcements."
+    }
+
+    const footerInfo: any = {
+        "Vault": "The Puppy Vault is currently locked.",
+        "Palooza": "The first Palooza hasn't been announced yet.",
+        "Collaboration": "Want to collab with Puppy Palooza? Shoot us an inquiry.",
     }
 
     const renderFAQ = () => {
@@ -74,40 +80,37 @@ export default function Home () {
                             <span>PUPPY</span>
                             <span className="social-animate"> PALOOZA ©</span>
                         </div>
-                        <div className="medium">Medium</div>
-                        <div className="opensea">OpenSea</div>
-                        <div className="twitter">Twitter</div>
-                        <div className="github">Github</div>
+                        <a href="https://twitter.com/puppypaloozanft" target="_blank" rel="noopener noreferrer"><div className="twitter">Twitter</div></a>
+                        <a href="https://opensea.io/" target="_blank" rel="noopener noreferrer"><div className="opensea">OpenSea</div></a>
+                        <a href="https://medium.com/" target="_blank" rel="noopener noreferrer"><div className="medium">Medium</div></a>
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer"><div className="github">Github</div></a>
                     </div>
                 </div>
             </div>
         )
     }
 
+    const renderSection = (title: any, info: any) => {
+        return (
+            <div className={`contact ${title.toLowerCase()}`}>
+                <div className="wrapper">
+                    <div>
+                        <h1>{title}</h1>
+                        <span>→</span>
+                    </div>
+                    <h2>{info}</h2>
+                </div>
+            </div>
+        )
+    }
+
     const renderFooter = () => {
-        let info = {
-            "Vault": "The Puppy Vault is currently locked.",
-            "Palooza": "The first Palooza hasn't been announced yet.",
-            "Collaboration": "Want to collab with Puppy Palooza? Shoot us an inquiry.",
-        }
         return (
             <>
-                {Object.keys(info).map((title, i) => {
+                {Object.keys(footerInfo).map((title, i) => {
                     let path = i !== 2 ? `/${title.toLowerCase()}` : '/';
-                    return (
-                        <NavLink to={path}>
-                            <div className={`contact ${title.toLowerCase()}`}>
-                                <div className="wrapper">
-                                    <div>
-                                        <h1>{title}</h1>
-                                        <span>→</span>
-                                    </div>
-                                    {/* @ts-ignore */}
-                                    <h2>{info[title]}</h2>
-                                </div>
-                            </div>
-                        </NavLink>
-                    )
+                    if (i === 2) return <a href="mailto:hello@puppypalooza.art">{renderSection(title, footerInfo[title])}</a>
+                    return <NavLink to={path}>{renderSection(title, footerInfo[title])}</NavLink>
                 })}
             </>
         )

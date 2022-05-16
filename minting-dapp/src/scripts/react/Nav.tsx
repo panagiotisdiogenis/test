@@ -18,10 +18,10 @@ export default function Nav () {
 					</div>
 				</div>
 				<div className="right">
-					<a className="icon"><img src="/build/images/opensea.svg" /></a>
-					<a className="icon"><img src="/build/images/medium.svg" /></a>
-					<a className="icon"><img src="/build/images/twitter.svg" /></a>
-					<a className="icon"><img src="/build/images/github.svg" /></a>
+				<a href="https://twitter.com/puppypaloozanft" target="_blank" rel="noopener noreferrer" className="icon"><img src="/build/images/twitter.svg" /></a>
+					<a href="https://opensea.io/" target="_blank" rel="noopener noreferrer" className="icon"><img src="/build/images/opensea.svg" /></a>
+					<a href="https://medium.com/" target="_blank" rel="noopener noreferrer" className="icon"><img src="/build/images/medium.svg" /></a>
+					<a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="icon"><img src="/build/images/github.svg" /></a>
 				</div>
 			</div>
           	{menuStatus ? <div className="menu">
