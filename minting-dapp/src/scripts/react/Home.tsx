@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { NavLink } from 'react-router-dom'
+import Simulator from "./Simulator"
 
 export default function Home () {
 
@@ -138,6 +139,7 @@ export default function Home () {
                     })}
                 </div>
                 {renderFAQ()}
+                <Simulator />
                 {renderTeam()}
             </div>
             {renderFooter()}

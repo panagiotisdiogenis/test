@@ -279,6 +279,80 @@
     }
   }
 
+  .simulator {
+    padding: 60px;
+    border: solid 1px;
+    border-radius: 10px;
+    background-color: #fff;
+    text-align: center;
+    .simulator-info {
+      padding: 0px 40px;
+      h1 {
+        font-size: 80px;
+        font-weight: 700;
+      }
+      p {
+        font-size: 20px;
+      }
+    }
+
+    .simulator-action {
+      border-radius: 10px;
+      // margin: 20px 0px;
+      .simulator-img {
+        margin-bottom: 40px;
+        border-radius: 10px;
+        transition: opacity ease-in-out;
+        height: 400px;
+        margin: 40px auto;
+        border: solid 1px #000;
+        // margin-bottom: 40px;
+        // animation: fadeIn 2s;
+        // -webkit-animation: fadeIn 2s;
+        // -moz-animation: fadeIn 2s;
+        // -o-animation: fadeIn 2s;
+        // -ms-animation: fadeIn 2s;
+
+        @keyframes fadeIn {
+          0% {opacity:0;}
+          100% {opacity:1;}
+        }
+        
+        @-moz-keyframes fadeIn {
+          0% {opacity:0;}
+          100% {opacity:1;}
+        }
+        
+        @-webkit-keyframes fadeIn {
+          0% {opacity:0;}
+          100% {opacity:1;}
+        }
+        
+        @-o-keyframes fadeIn {
+          0% {opacity:0;}
+          100% {opacity:1;}
+        }
+        
+        @-ms-keyframes fadeIn {
+          0% {opacity:0;}
+          100% {opacity:1;}
+        }
+
+      }
+    //   .fade-out {
+    //     opacity: 0;  
+    // }
+      .fade-in {
+        // opacity: 1;
+        animation: fadeIn 2s;
+        -webkit-animation: fadeIn 2s;
+        -moz-animation: fadeIn 2s;
+        -o-animation: fadeIn 2s;
+        -ms-animation: fadeIn 2s;
+      }
+    }
+  }
+
   .team-container {
     padding: 60px 0px;
     // border: 1px solid #000;
@@ -311,7 +385,7 @@
         border: solid 1px;
         img {
           border-radius: 5px;
-          // border: solid 2px #000;
+          border: solid 1px #000;
           &:hover {
             transform: scale(1.02);
           }
@@ -924,6 +998,23 @@
       }
       h2 {
         font-size: 16px;
+      }
+    }
+
+    .simulator {
+      padding: 40px;
+      .simulator-info {
+        h1 {
+          font-size: 50px;
+        }
+        p {
+          display: none;
+        }
+      }
+      .simulator-action {
+        .simulator-img {
+          height: initial;
+        }
       }
     }
   }
