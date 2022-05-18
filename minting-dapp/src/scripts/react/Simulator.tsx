@@ -26,7 +26,7 @@ export default function Simulator () {
     }
 
     return (
-        <>
+
           	<div className="simulator">
 				<div className="simulator-info">
                     <h1>SIMULATOR</h1>
@@ -37,6 +37,6 @@ export default function Simulator () {
                     <button onClick={() => handleClick()}>PALOOZA!</button>
 				</div>
 			</div>
-        </>
+
     )
 }
