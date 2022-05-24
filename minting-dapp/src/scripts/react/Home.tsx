@@ -53,17 +53,17 @@ export default function Home () {
                 <h1>TEAM</h1>
                 <div>
                     <a>
-                        <img src="https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/1.png" />
+                        <img src="/build/images/team1.png" />
                         <h2>PAMP</h2>
                         <p>@pamp</p>
                     </a>
                     <a>
-                        <img src="https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/6.png" />
+                        <img src="/build/images/team2.png" />
                         <h2>COMMUNITY</h2>
                         <p>X,XXX Pups</p>
                     </a>
                     <a>
-                        <img src="https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/3.png" />
+                        <img src="/build/images/team3.png" />
                         <h2>RADESAI</h2>
                         <p>@radesai</p>
                     </a>
@@ -110,8 +110,8 @@ export default function Home () {
             <>
                 {Object.keys(footerInfo).map((title, i) => {
                     let path = i !== 2 ? `/${title.toLowerCase()}` : '/';
-                    if (i === 2) return <a href="mailto:hello@puppypalooza.art">{renderSection(title, footerInfo[title])}</a>
-                    return <NavLink to={path}>{renderSection(title, footerInfo[title])}</NavLink>
+                    if (i === 2) return <a key={i} href="mailto:hello@puppypalooza.art">{renderSection(title, footerInfo[title])}</a>
+                    return <NavLink key={i} to={path}>{renderSection(title, footerInfo[title])}</NavLink>
                 })}
             </>
         )
@@ -132,9 +132,9 @@ export default function Home () {
                     </a>
                 </div>
                 <div className="pup">
-                    {[...Array(9)].map((item, key) => {
+                    {[1,2,3,5,8,4,7,6,9].map((item, key) => {
                         return (
-                            <img key={key} className="pup-img" src={`https://gateway.ipfs.io/ipfs/QmXL2B3Sux5GSJ78PncGEpobmCmDtA4zBybkQEggdtmNYe/${key+10}.png`} />
+                            <img key={key} className="pup-img" src={`/build/images/tile${item}.png`} />
                         )
                     })}
                 </div>
